@@ -6,8 +6,10 @@
 #^h::#^Left ; Move to left desktop with Win+Ctrl+H
 #^l::#^Right ; Move to right desktop with Win+Ctrl+L
 
-; Alt arrow keys - LAlt + hjkl
-<!h::Left
-<!j::Down
-<!k::Up
-<!l::Right
+SetCapsLockState "AlwaysOff"
+
+; Alternate arrow keys - CapsLock + hjkl
+CapsLock & h::Left
+CapsLock & j::Down
+CapsLock & k::Up
+CapsLock & l::Right
