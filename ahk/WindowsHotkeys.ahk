@@ -13,3 +13,6 @@ CapsLock & h::Left
 CapsLock & j::Down
 CapsLock & k::Up
 CapsLock & l::Right
+
+; Alternate Delete - CapsLock + Backspace
+CapsLock & Backspace::Delete
