@@ -175,6 +175,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c ~/.config/i3status/i3status.conf
         separator_symbol " | "
+        position top
 }
 
 # Set Screen Resolution
