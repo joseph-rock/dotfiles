@@ -29,11 +29,13 @@ require("lazy").setup({
     end,
   },
   { 
-    "Mofiqul/vscode.nvim",
+    "catppuccin/nvim", 
+    name = "catppuccin", 
+    priority = 1000,
     config = function()
-      require("vscode").load("dark")
+      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
     end,
-  },
+  },  
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -51,11 +53,12 @@ require("lazy").setup({
 }, {
 })
 
+vim.cmd.colorscheme "catppuccin"
 vim.opt.number = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
-vim.opt.mousescroll = "ver:3,hor:0"
+vim.opt.mousescroll = "ver:3,hor:1"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.gdefault = true
