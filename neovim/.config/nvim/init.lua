@@ -28,14 +28,6 @@ require("lazy").setup({
       })
     end,
   },
-  { 
-    "catppuccin/nvim", 
-    name = "catppuccin", 
-    priority = 1000,
-    config = function()
-      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-    end,
-  },  
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -53,7 +45,6 @@ require("lazy").setup({
 }, {
 })
 
-vim.cmd.colorscheme "catppuccin"
 vim.opt.number = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
