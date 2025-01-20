@@ -35,7 +35,7 @@
             "default": ""
         },
         "persistent-workspaces": {
-          "Virtual-1": [1, 2, 3, 4, 5]
+          "*": [1, 2, 3, 4, 5]
       	}
     },
     "hyprland/mode": {
@@ -49,7 +49,7 @@
         "tooltip-format": "{app}: {title}"
     },
     "tray": {
-        "icon-size": 18,
+        "icon-size": 14,
         "spacing": 10
     },
     "clock": {
