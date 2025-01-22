@@ -42,10 +42,23 @@ require("lazy").setup({
       require("which-key").setup()
     end,
   },
+  { 
+    "catppuccin/nvim", 
+    name = "catppuccin", 
+    priority = 1000,
+    config = function()
+      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
+    end,
+  },
 }, {
 })
 
+vim.cmd.colorscheme "catppuccin"
+
 vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
+
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
