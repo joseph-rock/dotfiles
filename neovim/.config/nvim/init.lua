@@ -50,6 +50,15 @@ require("lazy").setup({
       local macchiato = require("catppuccin.palettes").get_palette "macchiato"
     end,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.cmd [[Lazy load markdown-preview.nvim]]
+      vim.fn["mkdp#util#install"]() 
+    end,
+  },
 }, {
 })
 
