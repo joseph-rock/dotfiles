@@ -63,11 +63,8 @@ require("lazy").setup({
 })
 
 vim.cmd.colorscheme "catppuccin"
-
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
-
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
@@ -79,8 +76,9 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.swapfile = false
+vim.opt.list = true
 
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
-vim.keymap.set("x", "<", "<gv")
-vim.keymap.set("x", ">", ">gv")
+vim.keymap.set("x", "<", "<gv") -- indent left
+vim.keymap.set("x", ">", ">gv") -- indent right
