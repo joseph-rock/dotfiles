@@ -1,0 +1,11 @@
+configuration {
+  modes: [ drun, run, combi, window ];
+  combi-modes: [ drun, run, window ];
+  combi-hide-mode-prefix: true;
+}
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+inputbar {
+    children: [ "entry", "prompt" ]; // Define which elements are shown in the inputbar
+}
