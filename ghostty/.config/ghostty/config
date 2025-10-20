@@ -1,6 +1,6 @@
-theme = Ghostty Default Style Dark
+theme = Mellifluous
+font-family = "CaskaydiaMono Nerd Font"
 window-decoration = false
 clipboard-write = allow
 window-inherit-working-directory = true
 background-opacity = 1
-# command = fish --login --interactive
