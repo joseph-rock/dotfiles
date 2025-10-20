@@ -1,8 +1,0 @@
-general.import = [
-  "~/.config/alacritty/catppuccin-macchiato.toml"
-]
-
-[window]
-  opacity = 0.9
-  padding.x = 5
-  padding.y = 5
