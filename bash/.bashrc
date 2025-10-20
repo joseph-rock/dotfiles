@@ -10,6 +10,7 @@
 
 alias ls='ls --color=auto'
 alias la='ls -la --color=auto'
+alias gs='git status'
 alias grep='grep --color=auto'
 
 PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 "(%s) ")';
