@@ -28,24 +28,24 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-    config = function()
-      require("lspconfig").lua_ls.setup {}
-      require("lspconfig").rust_analyzer.setup {}
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "folke/lazydev.nvim",
+  --     ft = "lua", -- only load on lua files
+  --     opts = {
+  --       library = {
+  --         -- See the configuration section for more details
+  --         -- Load luvit types when the `vim.uv` word is found
+  --         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+  --       },
+  --     },
+  --   },
+  --   config = function()
+  --     require("lspconfig").lua_ls.setup {}
+  --     require("lspconfig").rust_analyzer.setup {}
+  --   end,
+  -- },
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -60,14 +60,6 @@ require("lazy").setup({
       require("which-key").setup()
     end,
   },
-  { 
-    "catppuccin/nvim", 
-    name = "catppuccin", 
-    priority = 1000,
-    config = function()
-      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-    end,
-  },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -80,7 +72,7 @@ require("lazy").setup({
 }, {
 })
 
-vim.cmd.colorscheme "catppuccin"
+vim.opt.termguicolors = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
