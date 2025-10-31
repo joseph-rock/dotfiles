@@ -1,94 +1,68 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+-- Vim Config
+vim.o.termguicolors = false
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.signcolumn = "yes"
+vim.o.wrap = false
+vim.o.mousescroll = "ver:3,hor:1"
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.gdefault = true
+vim.o.wildmode = "longest:full,full"
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.swapfile = false
+vim.o.list = true
 
-require("lazy").setup({
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      local configs = require("nvim-treesitter.configs")
-      configs.setup({
-        ensure_installed = {
-          "bash", "comment", "css", "diff", "dockerfile", "html", "javascript",
-          "json", "lua", "make", "markdown", "markdown_inline", "python",
-          "rust", "sql", "toml", "tsx", "typescript", "vim", "xml", "yaml",
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end,
-  },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   dependencies = {
-  --     "folke/lazydev.nvim",
-  --     ft = "lua", -- only load on lua files
-  --     opts = {
-  --       library = {
-  --         -- See the configuration section for more details
-  --         -- Load luvit types when the `vim.uv` word is found
-  --         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-  --       },
-  --     },
-  --   },
-  --   config = function()
-  --     require("lspconfig").lua_ls.setup {}
-  --     require("lspconfig").rust_analyzer.setup {}
-  --   end,
-  -- },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  },
-  {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup()
-    end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.cmd [[Lazy load markdown-preview.nvim]]
-      vim.fn["mkdp#util#install"]() 
-    end,
-  },
-}, {
+-- Plugins
+vim.pack.add({
+  { src = "https://github.com/stevearc/oil.nvim" },
+  { src = "https://github.com/echasnovski/mini.pick" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
 
-vim.opt.termguicolors = false
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.wrap = false
-vim.opt.mousescroll = "ver:3,hor:1"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.gdefault = true
-vim.opt.wildmode = "longest:full,full"
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.swapfile = false
-vim.opt.list = true
+require "mini.pick".setup()
+require "oil".setup()
+require "nvim-treesitter".setup({
+  ensure_installed = {
+    "bash", "comment", "css", "diff", "dockerfile", "html", "javascript",
+    "json", "lua", "make", "markdown", "markdown_inline", "python",
+    "rust", "sql", "toml", "tsx", "typescript", "vim", "xml", "yaml",
+  },
+  highlight = { enable = true },
+  indent = { enable = true },
+})
 
+-- General Keybinds
+vim.g.mapleader = " "
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("x", "<", "<gv") -- indent left
 vim.keymap.set("x", ">", ">gv") -- indent right
+vim.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>q', ':quit<CR>')
+
+-- Plugin Keybinds
+vim.keymap.set('n', '<leader>f', ":Pick files<CR>")
+vim.keymap.set('n', '<leader>h', ":Pick help<CR>")
+
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+
+vim.keymap.set('n', '<leader>e', ":Oil<CR>")
+
+-- LSP
+vim.lsp.enable({ "lua_ls", "rust_analyzer" })
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      }
+    }
+  }
+})
