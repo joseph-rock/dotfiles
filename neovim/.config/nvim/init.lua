@@ -15,6 +15,9 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.swapfile = false
 vim.o.list = true
+vim.o.winborder = "rounded"
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 8
 
 -- Plugins
 vim.pack.add({
@@ -22,11 +25,13 @@ vim.pack.add({
   { src = "https://github.com/echasnovski/mini.pick" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/mason-org/mason.nvim" },
 })
 
 require "mini.pick".setup()
 require "oil".setup()
-require "nvim-treesitter".setup({
+require "mason".setup()
+require "nvim-treesitter.configs".setup({
   ensure_installed = {
     "bash", "comment", "css", "diff", "dockerfile", "html", "javascript",
     "json", "lua", "make", "markdown", "markdown_inline", "python",
@@ -49,14 +54,11 @@ vim.keymap.set('n', '<leader>q', ':quit<CR>')
 -- Plugin Keybinds
 vim.keymap.set('n', '<leader>f', ":Pick files<CR>")
 vim.keymap.set('n', '<leader>h', ":Pick help<CR>")
-
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
-
 vim.keymap.set('n', '<leader>e', ":Oil<CR>")
 
 -- LSP
-vim.lsp.enable({ "lua_ls", "rust_analyzer" })
-
+vim.lsp.enable({ "lua_ls", "rust_analyzer", "json-lsp" })
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
