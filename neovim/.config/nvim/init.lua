@@ -4,14 +4,16 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+  { src = "https://github.com/folke/which-key.nvim" },
 })
 
--- LSP
+require("which-key").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "jsonls" }
 })
 
+-- LSP Configs
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -65,12 +67,6 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.synmaxcol = 300
 vim.o.winborder = "rounded"
 vim.o.list = true
-vim.o.splitright = true
-vim.o.splitbelow = true
-
--- Tab display settings
-vim.opt.showtabline = 1
-vim.opt.tabline = ''
 
 -- General Keybinds
 vim.g.mapleader = " "
@@ -78,20 +74,35 @@ vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("x", "<", "<gv") -- indent left
 vim.keymap.set("x", ">", ">gv") -- indent right
-vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>e', ":Explore<CR>")
 vim.keymap.set("n", "<leader>ff", ":find ")
 
 -- Tabs
+vim.o.showtabline = 1
+vim.o.tabline = ''
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>te', ':Texplore<CR>')
-vim.keymap.set('n', '<leader>tq', ':tabclose<CR>')
-vim.keymap.set('n', '<leader>tm', ':tabmove<CR>')
-vim.keymap.set('n', '<leader>t>', ':tabmove +1<CR>')
-vim.keymap.set('n', '<leader>t<', ':tabmove -1<CR>')
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>')
 
 -- Buffer
 vim.o.hidden = false
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
-vim.keymap.set("n", "<leader>bq", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>")
+
+-- Splitting & Resizing
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>sh", ":split<CR>")
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- Better window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
