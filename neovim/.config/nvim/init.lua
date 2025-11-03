@@ -90,6 +90,7 @@ vim.o.hidden = false
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "Buffer list" })
 
 -- Splitting & Resizing
 vim.o.splitright = true
