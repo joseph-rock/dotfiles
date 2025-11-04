@@ -1,11 +1,16 @@
 -- Plugins
 vim.pack.add({
   { src = "https://github.com/ramojus/mellifluous.nvim" },
+  { src = "https://github.com/folke/which-key.nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-  { src = "https://github.com/folke/which-key.nvim" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
+
+-- Colorscheme
+require("mellifluous").setup({})
+vim.cmd.colorscheme("mellifluous")
 
 require("which-key").setup()
 require("mason").setup()
@@ -24,9 +29,15 @@ vim.lsp.config("lua_ls", {
   }
 })
 
--- Colorscheme
-require("mellifluous").setup({})
-vim.cmd.colorscheme("mellifluous")
+-- Treesitter Configs
+require("nvim-treesitter").setup()
+require("nvim-treesitter.configs").setup({
+  modules = {},
+  ensure_installed = { "lua", "python", "rust", "json" },
+  sync_install = false,
+  ignore_install = {},
+  auto_install = true,
+})
 
 -- Basic Settings
 vim.o.number = true
@@ -37,8 +48,6 @@ vim.o.scrolloff = 10
 vim.o.sidescrolloff = 8
 vim.o.gdefault = true
 vim.o.swapfile = false
-vim.o.timeoutlen = 2000
-vim.o.ttimeoutlen = 0
 vim.o.wildmode = "longest:full,full"
 vim.o.mousescroll = "ver:3,hor:1"
 
@@ -80,21 +89,18 @@ vim.keymap.set("n", "<leader>ff", ":find ")
 
 -- Tabs
 vim.o.showtabline = 1
-vim.o.tabline = ''
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>te', ':Texplore<CR>')
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>')
 
 -- Buffer
-vim.o.hidden = false
+vim.o.hidden = true
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>")
 vim.keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "Buffer list" })
 
 -- Splitting & Resizing
-vim.o.splitright = true
-vim.o.splitbelow = true
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>")
 vim.keymap.set("n", "<leader>sh", ":split<CR>")
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
