@@ -220,7 +220,7 @@
       "KC_RBRC",
       "KC_BSLS",
       "KC_PGDN",
-      "MO(4)",
+      "LT(4,KC_ESC)",
       "KC_A",
       "KC_S",
       "KC_D",
