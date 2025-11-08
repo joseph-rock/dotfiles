@@ -6,19 +6,20 @@ vim.pack.add({
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
 })
 
 -- Colorscheme
 require("mellifluous").setup({})
 vim.cmd.colorscheme("mellifluous")
 
-require("which-key").setup()
+-- LSP
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "jsonls" }
+  ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls"}
 })
 
--- LSP Configs
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -29,7 +30,7 @@ vim.lsp.config("lua_ls", {
   }
 })
 
--- Treesitter Configs
+-- Treesitter
 require("nvim-treesitter").setup()
 require("nvim-treesitter.configs").setup({
   modules = {},
@@ -38,6 +39,9 @@ require("nvim-treesitter.configs").setup({
   ignore_install = {},
   auto_install = true,
 })
+
+-- Other Plugins
+require("which-key").setup()
 
 -- Basic Settings
 vim.o.number = true
@@ -50,6 +54,7 @@ vim.o.gdefault = true
 vim.o.swapfile = false
 vim.o.wildmode = "longest:full,full"
 vim.o.mousescroll = "ver:3,hor:1"
+vim.o.clipboard = "unnamedplus" -- Requires wl-clipboard
 
 -- Indentation
 vim.o.tabstop = 2
@@ -85,7 +90,6 @@ vim.keymap.set("x", "<", "<gv") -- indent left
 vim.keymap.set("x", ">", ">gv") -- indent right
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>e', ":Explore<CR>")
-vim.keymap.set("n", "<leader>ff", ":find ")
 
 -- Tabs
 vim.o.showtabline = 1
@@ -113,3 +117,10 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
