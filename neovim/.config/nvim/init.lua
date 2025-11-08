@@ -91,6 +91,10 @@ vim.keymap.set("x", ">", ">gv") -- indent right
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>e', ":Explore<CR>")
 
+-- Editing
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+
 -- Tabs
 vim.o.showtabline = 1
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>')
@@ -124,3 +128,11 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- Highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
