@@ -52,6 +52,7 @@ vim.o.scrolloff = 10
 vim.o.sidescrolloff = 8
 vim.o.gdefault = true
 vim.o.swapfile = false
+vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"
 vim.o.mousescroll = "ver:3,hor:1"
 vim.o.clipboard = "unnamedplus" -- Requires wl-clipboard
