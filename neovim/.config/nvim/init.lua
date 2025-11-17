@@ -1,25 +1,61 @@
--- Plugins
-vim.pack.add({
-  { src = "https://github.com/ramojus/mellifluous.nvim" },
-  { src = "https://github.com/folke/which-key.nvim" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-  { src = "https://github.com/nvim-lua/plenary.nvim" },
-  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+
+require("lazy").setup({
+  spec = {
+    { "https://github.com/ramojus/mellifluous.nvim" },
+    { "https://github.com/folke/which-key.nvim" },
+    { "https://github.com/mason-org/mason.nvim" },
+    {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {},
+      dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+      },
+      ensure_installed = {
+        "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls", "ruff", "marksman"
+      },
+    },
+    {
+      "https://github.com/nvim-treesitter/nvim-treesitter",
+      modules = {},
+      ensure_installed = {
+        "lua", "python", "rust", "json", "markdown",
+        "markdown_inline", "html", "yaml",
+      },
+      sync_install = false,
+      ignore_install = {},
+      auto_install = true,
+
+    },
+    { "https://github.com/nvim-lua/plenary.nvim" },
+    { "https://github.com/nvim-telescope/telescope.nvim" },
+    { "https://github.com/nvim-mini/mini.nvim" },
+    { "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  },
+  install = { colorscheme = { "habamax" } },
+  checker = { enabled = true },
 })
 
 -- Colorscheme
-require("mellifluous").setup({})
 vim.cmd.colorscheme("mellifluous")
 
--- LSP
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls"}
-})
-
+-- LSP Configs
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -29,19 +65,6 @@ vim.lsp.config("lua_ls", {
     }
   }
 })
-
--- Treesitter
-require("nvim-treesitter").setup()
-require("nvim-treesitter.configs").setup({
-  modules = {},
-  ensure_installed = { "lua", "python", "rust", "json" },
-  sync_install = false,
-  ignore_install = {},
-  auto_install = true,
-})
-
--- Other Plugins
-require("which-key").setup()
 
 -- Basic Settings
 vim.o.number = true
@@ -85,6 +108,7 @@ vim.o.list = true
 
 -- General Keybinds
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("x", "<", "<gv") -- indent left
