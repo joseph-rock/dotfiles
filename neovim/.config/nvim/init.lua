@@ -6,17 +6,6 @@ require("config.lazy")
 -- Colorscheme
 vim.cmd.colorscheme("mellifluous")
 
--- LSP Configs
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      }
-    }
-  }
-})
-
 -- Basic Settings
 vim.o.number = true
 vim.o.relativenumber = true
@@ -109,4 +98,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- LSP Configs
+return vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      }
+    }
+  }
 })
