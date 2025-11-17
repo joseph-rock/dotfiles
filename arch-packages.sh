@@ -10,9 +10,8 @@ fi
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# Pacman
 PACKAGES=(
-  # Hyprland
+  # Hyprland Reqs
   hyprland
   kitty
   dunst
@@ -22,39 +21,42 @@ PACKAGES=(
   qt5-wayland
   qt6-wayland
 
+  # Services
   pipewire
   wireplumber
-
+  networkmanager
   pavucontrol
   brightnessctl
-  
+
+  # Core Apps
+  ghostty
   hyprlock
   greetd
   rofi
   waybar
   dolphin
-
-  networkmanager
-
-  # Terminals
-  ghostty
+  firefox
+  bob
 
   # Fonts
   noto-fonts
   ttf-cascadia-mono-nerd
   woff2-font-awesome
 
+  # Utils
   git
   github-cli
   man-db
   stow
-  rust
   plocate
-
-  firefox
-  fastfetch
   kmonad
   wl-clipboard
+
+  # Languages
+  rust
+
+  # Misc
+  fastfetch
 )
 
 sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
@@ -69,9 +71,7 @@ if ! command -v yay &> /dev/null; then
     rm -rf /tmp/yay
 fi
 
-# AUR packages
 AUR_PACKAGES=(
-  bob
   webapp-manager
 )
 
@@ -80,7 +80,7 @@ if [ ${#AUR_PACKAGES[@]} -gt 0 ]; then
     yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 fi
 
-# bob use nightly nvim
+# Config nvim
 bob install nightly
 bob use nightly
 
