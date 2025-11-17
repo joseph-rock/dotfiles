@@ -1,56 +1,7 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-
-require("lazy").setup({
-  spec = {
-    { "https://github.com/ramojus/mellifluous.nvim" },
-    { "https://github.com/folke/which-key.nvim" },
-    { "https://github.com/mason-org/mason.nvim" },
-    {
-      "mason-org/mason-lspconfig.nvim",
-      opts = {},
-      dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
-      },
-      ensure_installed = {
-        "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls", "ruff", "marksman"
-      },
-    },
-    {
-      "https://github.com/nvim-treesitter/nvim-treesitter",
-      modules = {},
-      ensure_installed = {
-        "lua", "python", "rust", "json", "markdown",
-        "markdown_inline", "html", "yaml",
-      },
-      sync_install = false,
-      ignore_install = {},
-      auto_install = true,
-
-    },
-    { "https://github.com/nvim-lua/plenary.nvim" },
-    { "https://github.com/nvim-telescope/telescope.nvim" },
-    { "https://github.com/nvim-mini/mini.nvim" },
-    { "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
-  },
-  install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
-})
+-- Lazy
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+require("config.lazy")
 
 -- Colorscheme
 vim.cmd.colorscheme("mellifluous")
@@ -107,8 +58,6 @@ vim.o.winborder = "rounded"
 vim.o.list = true
 
 -- General Keybinds
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("x", "<", "<gv") -- indent left
