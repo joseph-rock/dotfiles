@@ -13,9 +13,14 @@ alias la='ls -la --color=auto'
 alias gs='git status'
 alias grep='grep --color=auto'
 alias ff='fastfetch'
+alias py='python3'
 
 PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 "(%s) ")';
 PROMPT_DIRTRIM=1
 PS1='\w ${PS1_CMD1}\$ '
 
 PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
