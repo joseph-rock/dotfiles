@@ -46,14 +46,29 @@ PACKAGES=(
   # Utils
   git
   github-cli
+  openssh
   man-db
   stow
   plocate
   kmonad
   wl-clipboard
+  unzip
+  wget
+  fd
 
   # Languages
   rust
+  luarocks
+  lua51 # nvim req
+  python
+  python-pip
+  ruby
+  composer
+  php
+  nodejs
+  npm
+  julia
+  jdk17-openjdk
 
   # Misc
   fastfetch
