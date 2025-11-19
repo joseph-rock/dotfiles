@@ -42,6 +42,7 @@ PACKAGES=(
   noto-fonts
   ttf-cascadia-mono-nerd
   woff2-font-awesome
+  otf-font-awesome # waybar req
 
   # Utils
   git
