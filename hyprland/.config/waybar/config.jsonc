@@ -9,11 +9,11 @@
     "clock"
   ],
   "modules-right": [
+    "network",
     "backlight",
-    "battery",
     "pulseaudio#volume",
     "pulseaudio#mic",
-    "network"
+    "battery"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -23,8 +23,7 @@
       "3": "",
       "4": "",
       "5": "",
-      "active": "",
-      "default": ""
+      "active": ""
     },
     "persistent-workspaces": {
       "*": [
@@ -42,12 +41,12 @@
     "format-alt": "{:%I:%M %p}"
   },
   "backlight": {
-    "format": "{percent}%  ",
+    "format": " ",
     "tooltip-format": "Brightness {percent}%"
   },
   "pulseaudio#volume": {
-    "format": "{volume}%  ",
-    "format-muted": "{volume}% ",
+    "format": " ",
+    "format-muted": "",
     "format-icons": {
       "default": [
         " ",
@@ -60,16 +59,16 @@
   },
   "pulseaudio#mic": {
     "format": "{format_source}",
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
+    "format-source": "󰍬 ",
+    "format-source-muted": "󰍭 ",
     "tooltip-format": "Toggle Microphone",
     "on-click": "pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle"
   },
   "network": {
-    "format-wifi": "󰖩",
-    "format-ethernet": "",
-    "format-disconnected": "󱛅",
-    "tooltip-format": "{essid} ({signalStrength}%) ",
+    "format-wifi": "󰖩 ",
+    "format-ethernet": " ",
+    "format-disconnected": "󱛅 ",
+    "tooltip-format": "{essid} ({signalStrength}%)  ",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "nm-connection-editor"
   },
@@ -81,14 +80,14 @@
     "format": "{capacity}% {icon}",
     "tooltip-format": "{time} Remaining",
     "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    "format-charging": "{capacity}%  ",
+    "format-plugged": "{capacity}%  ",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
     ]
   }
 }
