@@ -1,0 +1,5 @@
+[server]
+## show percentage on the right of the OSD
+show_percentage = true
+
+[client]
