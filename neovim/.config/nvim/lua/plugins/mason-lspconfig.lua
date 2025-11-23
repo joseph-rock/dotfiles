@@ -2,7 +2,7 @@ return {
   "mason-org/mason-lspconfig.nvim",
   opts = {
     ensure_installed = {
-      "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls", "ruff", "marksman"
+      "lua_ls", "pyright", "rust_analyzer", "jsonls", "bashls", "ruff", "marksman", "css-lsp"
     },
   },
   dependencies = {
