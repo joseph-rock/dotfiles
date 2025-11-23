@@ -6,41 +6,38 @@
 }
 
 window#waybar {
-  background-color: transparent;
+  background: rgba(3, 3, 3, .2);
 }
 
-tooltip {
-  background-color: transparent;
-  border: 2px solid;
-}
-
-button {
+button,
+button:hover {
   background: inherit;
   border: none;
   border-radius: 0;
+  box-shadow: none;
 }
 
+tooltip,
 .modules-left,
 .modules-center,
 .modules-right {
   background: rgba(3, 3, 3, .8);
-  padding: 0px 15px;
-  margin: 0px 5px;
+  padding: 0rem 1rem;
+  margin: 0rem .5rem;
   border: 2px solid;
-  border-radius: 8;
+  border-radius: 6;
   border-color: #404040;
 }
 
-#workspaces button {
-  padding: 0 .3rem;
-}
-
 #workspaces,
+#workspaces button,
 #backlight,
 #battery,
 #network,
 #pulseaudio {
-  min-width: 1.8rem;
+  min-width: 1.6rem;
+  padding: .1rem .2rem;
+  border-radius: 4;
 }
 
 @keyframes blink {
@@ -54,6 +51,7 @@ button {
 #battery.critical:not(.charging) {
   background-color: #f53c3c;
   color: #ffffff;
+  border-radius: 4;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);

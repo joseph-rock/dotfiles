@@ -18,12 +18,12 @@
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "active": ""
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": " ",
+      "5": " ",
+      "active": " "
     },
     "persistent-workspaces": {
       "*": [
@@ -77,17 +77,9 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
+    "format": "  {capacity}%",
     "tooltip-format": "{time} Remaining",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}%  ",
-    "format-plugged": "{capacity}%  ",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%"
   }
 }
