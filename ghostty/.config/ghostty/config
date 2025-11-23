@@ -3,5 +3,5 @@ font-family = "CaskaydiaMono Nerd Font"
 window-decoration = false
 clipboard-write = allow
 window-inherit-working-directory = true
-background-opacity = 1
+background-opacity = .9
 mouse-hide-while-typing = true
