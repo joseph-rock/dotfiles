@@ -1,12 +1,27 @@
 * {
   font-family: "inter-font", "ttf-nerd-fonts-symbols";
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #dddddd;
 }
 
 window#waybar {
-  background: rgba(3, 3, 3, .2);
+  background: transparent;
+  min-height: 1.5rem;
+}
+
+tooltip,
+#utils,
+#battery,
+.modules-center,
+.modules-left {
+  background: rgba(15, 15, 15, .9);
+  /* background: rgba(3, 3, 100, .8); */
+  padding: 0rem 1rem;
+  margin: 0rem .5rem;
+  border: 1px solid;
+  border-radius: 10;
+  border-color: rgba(0, 0, 0, .9);
 }
 
 button,
@@ -17,22 +32,10 @@ button:hover {
   box-shadow: none;
 }
 
-tooltip,
-.modules-left,
-.modules-center,
-.modules-right {
-  background: rgba(3, 3, 3, .8);
-  padding: 0rem 1rem;
-  margin: 0rem .5rem;
-  border: 2px solid;
-  border-radius: 6;
-  border-color: #404040;
-}
-
+#clock,
 #workspaces,
 #workspaces button,
 #backlight,
-#battery,
 #network,
 #pulseaudio {
   min-width: 1.6rem;
