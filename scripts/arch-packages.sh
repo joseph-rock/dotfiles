@@ -20,6 +20,7 @@ PACKAGES=(
   hyprpolkitagent
   qt5-wayland
   qt6-wayland
+  adw-gtk-theme
 
   # Services
   pipewire
