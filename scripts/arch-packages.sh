@@ -42,6 +42,8 @@ PACKAGES=(
   firefox
   bob
   fastfetch
+  hyprshot
+  hyprpicker
 
   # Fonts
   noto-fonts
