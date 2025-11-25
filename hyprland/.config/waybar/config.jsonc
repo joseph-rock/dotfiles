@@ -88,8 +88,10 @@
     },
     "format": "   {capacity}%",
     "tooltip-format": "{time} Remaining",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%"
+    "format-charging": "  {capacity}%", //tool tip for time til full
+    "tooltip-format-charging": "Est: {time} until charged",
+    "format-plugged": "  {capacity}%",
+    "tooltip-format-plugged": "Fully Charged"
   },
   "tray": {
     "spacing": 3
