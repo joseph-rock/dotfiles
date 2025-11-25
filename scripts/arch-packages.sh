@@ -26,6 +26,8 @@ PACKAGES=(
   pipewire
   wireplumber
   networkmanager
+  network-manager-applet
+  blueman
   pavucontrol
   brightnessctl
   swayosd
@@ -39,12 +41,15 @@ PACKAGES=(
   dolphin
   firefox
   bob
+  fastfetch
 
   # Fonts
   noto-fonts
   ttf-cascadia-mono-nerd
+  ttf-nerd-font-symbols
   woff2-font-awesome
   otf-font-awesome # waybar req
+  inter-font
 
   # Utils
   git
@@ -72,9 +77,6 @@ PACKAGES=(
   npm
   julia
   jdk17-openjdk
-
-  # Misc
-  fastfetch
 )
 
 sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
@@ -97,10 +99,6 @@ if [ ${#AUR_PACKAGES[@]} -gt 0 ]; then
     echo "Installing AUR packages..."
     yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 fi
-
-# Config nvim
-bob install nightly
-bob use nightly
 
 # Start process
 sudo systemctl start NetworkManager.service
