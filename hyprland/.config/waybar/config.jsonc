@@ -5,7 +5,6 @@
   "group/utils": {
     "orientation": "horizontal",
     "modules": [
-      "network",
       "backlight",
       "pulseaudio#volume",
       "pulseaudio#mic",
@@ -19,18 +18,19 @@
       "clock#time"
   ],
   "modules-right": [
+    "tray",
     "group/utils",
     "battery"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": " ",
-      "2": " ",
-      "3": " ",
-      "4": " ",
-      "5": " ",
-      "active": " "
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "active": ""
     },
     "persistent-workspaces": {
       "*": [
@@ -81,14 +81,6 @@
     "tooltip-format": "Toggle Microphone",
     "on-click": "pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle"
   },
-  "network": {
-    "format-wifi": "󰖩 ",
-    "format-ethernet": " ",
-    "format-disconnected": "󱛅 ",
-    "tooltip-format": "{essid} ({signalStrength}%)  ",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor"
-  },
   "battery": {
     "states": {
       "warning": 30,
@@ -98,5 +90,8 @@
     "tooltip-format": "{time} Remaining",
     "format-charging": "  {capacity}%",
     "format-plugged": "  {capacity}%"
+  },
+  "tray": {
+    "spacing": 3
   }
 }

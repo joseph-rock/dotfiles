@@ -11,12 +11,12 @@ window#waybar {
 }
 
 tooltip,
+#tray,
 #utils,
 #battery,
 .modules-center,
-.modules-left {
+#workspaces {
   background: rgba(15, 15, 15, .9);
-  /* background: rgba(3, 3, 100, .8); */
   padding: 0rem 1rem;
   margin: 0rem .5rem;
   border: 1px solid;
@@ -24,19 +24,17 @@ tooltip,
   border-color: rgba(0, 0, 0, .9);
 }
 
-button,
-button:hover {
-  background: inherit;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
+/* button, */
+/* button:hover { */
+/*   background: inherit; */
+/*   border: none; */
+/*   border-radius: 0; */
+/*   box-shadow: none; */
+/* } */
 
 #clock,
-#workspaces,
 #workspaces button,
 #backlight,
-#network,
 #pulseaudio {
   min-width: 1.6rem;
   padding: .1rem .2rem;
