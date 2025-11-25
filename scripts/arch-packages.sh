@@ -20,6 +20,7 @@ PACKAGES=(
   hyprpolkitagent
   qt5-wayland
   qt6-wayland
+  nwg-look # set GTK themes
   adw-gtk-theme
 
   # Services
