@@ -21,6 +21,8 @@ PACKAGES=(
   qt5-wayland
   qt6-wayland
   nwg-look # set GTK themes
+
+  #themes
   adw-gtk-theme
 
   # Services
