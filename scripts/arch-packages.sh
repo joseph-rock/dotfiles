@@ -41,7 +41,7 @@ PACKAGES=(
   greetd
   rofi
   waybar
-  dolphin
+  nautilus
   firefox
   bob
   fastfetch
