@@ -1,4 +1,4 @@
-theme = Mellifluous
+theme = "Adwaita Dark"
 font-family = "CaskaydiaMono Nerd Font"
 window-decoration = false
 clipboard-write = allow
