@@ -46,6 +46,7 @@ PACKAGES=(
   fastfetch
   hyprshot
   hyprpicker
+  htop
 
   # Fonts
   noto-fonts
