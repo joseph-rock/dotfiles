@@ -42,7 +42,6 @@ PACKAGES=(
   rofi
   waybar
   nautilus
-  firefox
   bob
   fastfetch
   hyprshot
@@ -98,6 +97,7 @@ fi
 
 AUR_PACKAGES=(
   webapp-manager
+  librewolf-bin
 )
 
 if [ ${#AUR_PACKAGES[@]} -gt 0 ]; then
