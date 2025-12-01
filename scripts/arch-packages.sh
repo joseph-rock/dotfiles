@@ -42,7 +42,7 @@ PACKAGES=(
   rofi
   waybar
   nautilus
-  bob
+  neovim
   fastfetch
   hyprshot
   hyprpicker
