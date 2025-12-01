@@ -6,16 +6,16 @@
   color: rgba(230, 230, 230, 1);
   background: transparent;
   padding: .1rem .2rem;
-  box-shadow: none;
   border: none;
-  border-color: rgba(0, 0, 0, .9);
-  border-radius: 10;
+  border-radius: 8;
+  box-shadow: none;
 }
 
 /* Module Containers */
 #workspaces,
 #clock.time,
 #tray,
+#tray menu,
 #utils,
 #battery,
 tooltip {
@@ -34,6 +34,8 @@ tooltip {
 }
 
 /* Misc */
+#tray menuitem:hover,
+#tray menuitem:active,
 #workspaces button:hover {
   background: rgba(50, 50, 50, 1);
 }
