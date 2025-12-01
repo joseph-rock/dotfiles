@@ -1,7 +1,10 @@
 // -*- mode: jsonc -*-
 {
+  // Global
   "layer": "top",
   "position": "top",
+
+  // Module Containers
   "group/utils": {
     "orientation": "horizontal",
     "modules": [
@@ -22,15 +25,17 @@
     "group/utils",
     "battery"
   ],
+
+  // Modules
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "active": ""
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "active": ""
     },
     "persistent-workspaces": {
       "*": [
@@ -94,6 +99,6 @@
     "tooltip-format-plugged": "Fully Charged"
   },
   "tray": {
-    "spacing": 3
+    "spacing": 4
   }
 }
