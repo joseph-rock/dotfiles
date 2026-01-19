@@ -19,6 +19,10 @@ PACKAGES=(
   hyprpolkitagent
   qt5-wayland
   qt6-wayland
+  qt5ct
+  qt6ct
+  kvantum
+  breeze-icons
   nwg-look
   adw-gtk-theme
   pipewire
