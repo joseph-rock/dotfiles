@@ -10,7 +10,7 @@ fi
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-PACKAGES=(
+HYPRLAND=(
   hyprland
   kitty
   dunst
@@ -24,7 +24,13 @@ PACKAGES=(
   kvantum
   breeze-icons
   nwg-look
+)
+
+THEMES=(
   adw-gtk-theme
+)
+
+SERVICES=(
   pipewire
   wireplumber
   networkmanager
@@ -32,7 +38,11 @@ PACKAGES=(
   blueman
   pavucontrol
   brightnessctl
+  playerctl
   swayosd
+)
+
+COREAPPS=(
   ghostty
   hyprlock
   greetd
@@ -44,12 +54,18 @@ PACKAGES=(
   hyprshot
   hyprpicker
   htop
+)
+
+FONTS=(
   noto-fonts
   ttf-cascadia-mono-nerd
   ttf-nerd-fonts-symbols
   woff2-font-awesome
   otf-font-awesome
   inter-font
+)
+
+UTILS=(
   git
   github-cli
   openssh
@@ -61,6 +77,9 @@ PACKAGES=(
   unzip
   wget
   fd
+)
+
+LANGUAGES=(
   rust
   luarocks
   lua51
@@ -73,6 +92,25 @@ PACKAGES=(
   npm
   julia
   jdk17-openjdk
+)
+
+NVIDIA=(
+  linux-headers
+  linux-lts-headers
+  nvidia-utils
+  nvidia-settings
+  nvidia-dkms
+)
+
+PACKAGES=(
+  ${HYPRLAND[@]}
+  ${THEMES[@]}
+  ${SERVICES[@]}
+  ${COREAPPS[@]}
+  ${FONTS[@]}
+  ${UTILS[@]}
+  ${LANGUAGES[@]}
+  ${NVIDIA[@]}
 )
 
 sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
