@@ -11,7 +11,6 @@ echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
 PACKAGES=(
-  # Hyprland Reqs
   hyprland
   kitty
   dunst
@@ -20,12 +19,8 @@ PACKAGES=(
   hyprpolkitagent
   qt5-wayland
   qt6-wayland
-  nwg-look # set GTK themes
-
-  #themes
+  nwg-look
   adw-gtk-theme
-
-  # Services
   pipewire
   wireplumber
   networkmanager
@@ -34,8 +29,6 @@ PACKAGES=(
   pavucontrol
   brightnessctl
   swayosd
-
-  # Core Apps
   ghostty
   hyprlock
   greetd
@@ -47,16 +40,12 @@ PACKAGES=(
   hyprshot
   hyprpicker
   htop
-
-  # Fonts
   noto-fonts
   ttf-cascadia-mono-nerd
-  ttf-nerd-font-symbols
+  ttf-nerd-fonts-symbols
   woff2-font-awesome
-  otf-font-awesome # waybar req
+  otf-font-awesome
   inter-font
-
-  # Utils
   git
   github-cli
   openssh
@@ -68,11 +57,9 @@ PACKAGES=(
   unzip
   wget
   fd
-
-  # Languages
   rust
   luarocks
-  lua51 # nvim req
+  lua51
   python
   python-pip
   ruby
@@ -89,6 +76,7 @@ sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
 # Install yay
 if ! command -v yay &> /dev/null; then
     echo "Installing yay..."
+    sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git /tmp/yay
     cd /tmp/yay
     makepkg -si --noconfirm
@@ -114,6 +102,6 @@ sudo systemctl enable --now swayosd-libinput-backend.service
 # Turn off computer beep
 sudo rmmod pcspkr
 sudo rmmod snd_pcsp
-sudo mv ./nobeep.conf /etc/modprobe.d/nobeep.conf
+sudo cp ./nobeep.conf /etc/modprobe.d/nobeep.conf
 
 echo "Done"
